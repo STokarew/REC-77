@@ -4,26 +4,25 @@ namespace REC_77
 {
     class Program
     {
-        private static int[,] RandomMatrix(int n, int m)
+        private static int[,] RandomMatrix(int[,] ARR)
         {
-            int[,] ARR = new int[n, m];
             Random rnd = new Random();
-            for (int i = 0; i < n; i++)
+            for (int i = 0; i < ARR.GetLength(0) - 1; i++)
             {
-                for (int j = 0; j < m; j++)
+                for (int j = 0; j < ARR.GetLength(1) - 1; j++)
                 {
-                    ARR[i, j] = rnd.Next(1, 100); 
+                    ARR[i, j] = rnd.Next(10, 100); 
                 }
             }
             return ARR;
         }
-        static void PrintMatrix(int[,] m)
+        static void PrintMatrix(int[,] Arr)
         {
-            for (int i = 0; i < m.GetLength(0); i++)
+            for (int i = 0; i < Arr.GetLength(0); i++)
             {
-                for (int j = 0; j < m.GetLength(1); j++)
+                for (int j = 0; j < Arr.GetLength(1); j++)
                 {
-                    Console.Write(m[i, j] + "\t");
+                    Console.Write(Arr[i, j] + "\t");
                 }
                 Console.WriteLine();
             }
@@ -34,7 +33,8 @@ namespace REC_77
             var Row = int.Parse(Console.ReadLine());
             Console.Write("Введите количество столбцов матрицы: ");
             var Column = int.Parse(Console.ReadLine());
-            PrintMatrix(RandomMatrix(Row, Column));
+            int[,] Arr = new int[Row, Column];
+            PrintMatrix(RandomMatrix(Arr));
             Console.ReadKey();
         }
     }
